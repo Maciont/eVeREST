@@ -71,7 +71,7 @@ describe('*[GET Tests]*', function() {
 
 describe('*[POST Tests]*', function() {
     it('POST simple JSON on /posts', function(done) {
-        request.post({url: baseUrl + '/posts/', form: {Viess:'Mann', Eve:'Rest', ProofOf:'Concept'}}, function(err,httpResponse) {
+        request.post({url: baseUrl + '/posts/', form: {V13ss:'M4nn', Ev3:'Re5t', ProofOf:'Concept'}}, function(err,httpResponse) {
                 expect(httpResponse.statusCode).to.be.oneOf([201,202]);
                 cl('* STATUS CODE ' + httpResponse.statusCode)
                 cl('* Successfully added: \n' + httpResponse.body)
@@ -84,7 +84,7 @@ describe('*[POST Tests]*', function() {
 describe('*[PUT Tests]*', function() {
     it('PUT simple JSON on /posts/1', function(done) {
         cl('* Updating /posts/1')
-        request.put({url: baseUrl + '/posts/1', form: {Mann:'Viess', Rest:'Eve', Kotly:'Nie Piece'}}, function(err,httpResponse) {
+        request.put({url: baseUrl + '/posts/1', form: {M4nn:'V13ss', Re5t:'Ev3', K0tly:'N1e Pi3ce'}}, function(err,httpResponse) {
                 expect(httpResponse.statusCode).to.be.oneOf([200, 201, 204]);
                 cl('* STATUS CODE ' + httpResponse.statusCode)
                 cl('* Successfully updated /posts/1 with \n' + httpResponse.body)
