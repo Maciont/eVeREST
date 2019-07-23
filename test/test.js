@@ -1,7 +1,7 @@
-var request = require("request");
-var expect = require("chai").expect;
-var baseUrl= "https://jsonplaceholder.typicode.com"
-var cl= console.log
+const request = require("request");
+const expect = require("chai").expect;
+const baseUrl= "https://jsonplaceholder.typicode.com"
+const cl= console.log
 
 
 describe('*[GET Tests]*', function() {
