@@ -1,12 +1,18 @@
 # eVeREST
 
 ## Getting Started
+I assume that you already use Node.js :)
 List of libraries you need to install in order to run the test suite:
 ```
 Mocha
 Chai
 Request
+Request-promise
 ```
+
+Please note that ```mocha``` has some issues when installed not globally.
+I strongly recommend installing it globally by
+```npm install -g mocha```
 
 ## Running the tests
 
