@@ -7,6 +7,7 @@ List of libraries you need to install in order to run the test suite:
 Mocha
 Chai
 Request
+Request-promise
 ```
 
 Please note that ```mocha``` has some issues when installed not globally.
