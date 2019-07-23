@@ -1,37 +1,41 @@
 const request = require("request");
 const expect = require("chai").expect;
+const rp = require("request-promise");
 const baseUrl= "https://jsonplaceholder.typicode.com"
 const cl= console.log
 
-
 describe('*[GET Tests]*', function() {
-    it('Status Code is 200 and 100 items are returned in JSON on GET/posts', function(done){
-        request.get({url: baseUrl + '/posts'},
-            function(error, response, body) {
-                cl('* STATUS CODE 200 OK')
-                expect(response.statusCode).to.equal(200);
-                var bodyObj = JSON.parse(body);
-                cl('* JSON parsed correctly')
-                var itemsNum = (Object.keys(bodyObj).length);
-                expect(itemsNum).to.equal(100);
-                cl('There are ' + itemsNum + ' objects in /posts JSON as expected')
-            done();
-            })
+    it('Status Code is 200 and 100 items are returned in JSON on GET/posts', async function(){
+
+        const response = await rp.get({
+            url: baseUrl + '/posts',
+            resolveWithFullResponse: true
+        });
+
+        cl('* STATUS CODE 200 OK')
+        expect(response.statusCode).to.equal(200);
+        const bodyObj = JSON.parse(response.body);
+        cl('* JSON parsed correctly')
+        const itemsNum = (Object.keys(bodyObj).length);
+        expect(itemsNum).to.equal(100);
+        cl('There are ' + itemsNum + ' objects in /posts JSON as expected')
     })
 
-    it('Status Code is 200 and headers are as expexted on GET /posts/1', function(done) {
-        request.get({url: baseUrl + '/posts/1'},
-            function(error, response) {
-                cl('* STATUS CODE 200 OK')
-                expect(response.statusCode).to.equal(200);
-                cl('* Content-Type is application/json')
-                expect(response.headers["content-type"]).to.equal('application/json; charset=utf-8');
-            done();
+    it('Status Code is 200 and headers are as expexted on GET /posts/1', async function(){
+
+        const response = await rp.get({
+            url: baseUrl + '/posts',
+            resolveWithFullResponse: true
+        });
+        
+        cl('* STATUS CODE 200 OK')
+        expect(response.statusCode).to.equal(200);
+        cl('* Content-Type is application/json')
+        expect(response.headers["content-type"]).to.equal('application/json; charset=utf-8');
             }
-            
-        )}
         )
 
+// That following tests use the standard mocha function(done) with done() call at the end, just for the record
     it('Check if there are more than 45 occurences of "eveniet" in GET /comments?userId=1', function(done) {
         request.get({url: baseUrl + '/comments?userId=1'},
             function(error, response, body) {
